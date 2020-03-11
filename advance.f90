@@ -47,21 +47,21 @@ contains
     ng_p = phi(1)%ng
 
     do n=1,nlevs
-				do i=1,nfabs(phi(n))
-				   pp  => dataptr(phi(n),i)
-				   lo = lwb(get_box(phi(n),i))
-				   hi = upb(get_box(phi(n),i))
-           !! psi, psi_nex
-				   call update_phi_2d(pp(:,:,1,1),pp(:,:,1,2), ng_p,lo, hi, dx(n), dt)
+    do i=1,nfabs(phi(n))
+	     pp  => dataptr(phi(n),i)
+	     lo = lwb(get_box(phi(n),i))
+       hi = upb(get_box(phi(n),i))
+       !! psi, psi_nex
+			 call update_phi_2d(pp(:,:,1,1),pp(:,:,1,2), ng_p,lo, hi, dx(n), dt)
 				end do
     end do
 
     do n=1,nlevs
 				do i=1,nfabs(phi(n))
-				   pp  => dataptr(phi(n),i)
-				   lo = lwb(get_box(phi(n),i))
-				   hi = upb(get_box(phi(n),i))
-				   call array_copy_2d(pp(:,:,1,1),pp(:,:,1,2), ng_p,lo, hi)
+			   pp  => dataptr(phi(n),i)
+				 lo = lwb(get_box(phi(n),i))
+				 hi = upb(get_box(phi(n),i))
+				 call array_copy_2d(pp(:,:,1,1),pp(:,:,1,2), ng_p,lo, hi)
 				end do
     end do
     
